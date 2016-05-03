@@ -24,6 +24,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y install \
   php5-curl \
   php5-ldap \
   php5-mysql && \
+  libapache2-mod-php5 && \
   rm -rf /var/lib/apt/lists/*
 
 # Download & install OSTicket
@@ -52,6 +53,7 @@ RUN wget -nv -O upload/include/plugins/auth-ldap.phar http://osticket.com/sites/
 
 # Download OSTEquipmentPlugin Plugin
 RUN wget -nv -O upload/include/plugins/v1.9.4.zip https://github.com/poctob/OSTEquipmentPlugin/archive/v1.9.4.zip && \
+    cd /data/upload/include/plugins/ && \
     unzip upload/include/plugins/v1.9.4.zip && \
     rm upload/include/plugins/v1.9.4.zip && \
     chown -R www-data:www-data /data/upload/include/plugins/
