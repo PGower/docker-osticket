@@ -23,7 +23,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y install \
   php5-gd \
   php5-curl \
   php5-ldap \
-  php5-mysql && \
+  php5-mysql \
   libapache2-mod-php5 && \
   rm -rf /var/lib/apt/lists/*
 
