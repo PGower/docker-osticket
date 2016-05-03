@@ -53,7 +53,7 @@ RUN wget -nv -O upload/include/plugins/auth-ldap.phar http://osticket.com/sites/
 # Download OSTEquipmentPlugin Plugin
 RUN wget -nv -O upload/include/plugins/v1.9.4.zip https://github.com/poctob/OSTEquipmentPlugin/archive/v1.9.4.zip && \
     unzip upload/include/plugins/v1.9.4.zip && \
-    rm upload/include/plugins/v1.9.4.zip/v1.9.4.zip && \
+    rm upload/include/plugins/v1.9.4.zip && \
     chown -R www-data:www-data /data/upload/include/plugins/
 
 # Configure nginx
