@@ -23,6 +23,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y install \
   php5-imap \
   php5-gd \
   php5-curl \
+  php5-ldap \
   php5-mysql && \
   rm -rf /var/lib/apt/lists/*
 
@@ -55,7 +56,8 @@ RUN sed -i -e "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g" /etc/php5/fpm/php.ini
     sed -i -e 's#;sendmail_path\s*=\s*#sendmail_path = "/usr/bin/msmtp -C /etc/msmtp -t "#g' /etc/php5/fpm/php.ini && \
     sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" /etc/php5/fpm/php-fpm.conf && \
     sed -i -e "s/;catch_workers_output\s*=\s*yes/catch_workers_output = yes/g" /etc/php5/fpm/pool.d/www.conf && \
-    php5enmod imap
+    php5enmod imap && \
+    php5enmod ldap
 
 # Add nginx site
 ADD virtualhost /etc/nginx/sites-available/default
