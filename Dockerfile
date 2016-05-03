@@ -73,11 +73,11 @@ RUN php5enmod imap && \
 
 # Add nginx site
 #ADD virtualhost /etc/nginx/sites-available/default
-#ADD supervisord.conf /data/supervisord.conf
-#ADD msmtp.conf /data/msmtp.conf
-#ADD bin/ /data/bin
+ADD supervisord.conf /data/supervisord.conf
+ADD msmtp.conf /data/msmtp.conf
+ADD bin/ /data/bin
 ADD apache_site /etc/apache2/sites-enabled/000-default.conf
 
-VOLUME ["/data/upload/include/plugins","/var/log/nginx"]
+VOLUME ["/var/log/nginx"]
 EXPOSE 80
 CMD ["/data/bin/start.sh"]
